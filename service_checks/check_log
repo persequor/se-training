@@ -1,0 +1,25 @@
+#!/bin/bash
+code=`tail -1 $*`
+
+case `echo $code | grep -o 'OK\|WARNING\|CRITICAL\|UNKNOWN'` in
+	OK)
+		echo "OK"
+		exit 0
+	;;
+	WARNING)
+		echo "WARNING"
+		exit 1
+	;;
+	CRITICAL)
+		echo "CRITICAL"
+		exit 2
+	;;
+	UNKNOWN)
+		echo "UNKNOWN"
+		exit 3
+	;;
+	*)
+		echo "OTHERS"
+		exit 4
+	;;
+esac
